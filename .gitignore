@@ -52,3 +52,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# settings private key and others.
+environment_setup.sh
+bombazproject/bombazproject/settings/development.py
