@@ -1,4 +1,4 @@
-#!/home/smatas/workspace/bombaz/bombaz-env/bin/python3.4
+#!/home/smatas/workspace/bombaz/virtualenv/bin/python3.4
 
 # -*- coding: utf-8 -*-
 import re

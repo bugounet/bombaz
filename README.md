@@ -10,3 +10,29 @@ List of technologies used in this project :
 - On frontend side : AngularJS, Grunt (for mimifying the code, and running unit tests), WebSockets (WAMP client)
 - Database is provided by postresql
 
+HOWTO install : 
+# put the projet somewhere to make the venv work
+put the project repository into /home/<you>/workspace/bombaz
+# replace my user name by <you>
+sed -R -e 's/smatas/<you>/gi' *
+#Update your system
+sudo apt-get update
+sudo apt-get upgrade
+# install dev libs so you can instal psycopg2
+sudo apt-get install libpq-dev python3-dev
+# install pgsql
+sudo apt-get install  postgresql postgresql-contrib
+# install nginx
+sudo apt-get install nginx
+# connect postgresql:
+sudo su - postgresql
+# in command line : create database
+createdb bombazdb
+# create user
+createuser -P databaseuser
+# connect to sql interpreter
+psql
+# grant all privileges on database you just created
+GRANT ALL PRIVILEGES ON DATABASE bombazdb TO databaseuser;
+
+
