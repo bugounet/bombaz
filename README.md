@@ -14,7 +14,7 @@ HOWTO install :
 # put the projet somewhere to make the venv work
 put the project repository into /home/<you>/workspace/bombaz
 # replace my user name by <you>
-sed -R -e 's/smatas/<you>/gi' *
+find ./virtualenv -type f -exec sed -i 's/smatas/<you>/g' {} \;
 #Update your system
 sudo apt-get update
 sudo apt-get upgrade
