@@ -43,5 +43,5 @@ GRANT ALL PRIVILEGES ON DATABASE bombazdb TO databaseuser;
 # repository.
 sudo apt-add-repository ppa:chris-lea/node.js
 sudo apt-get update
-sudo apt-get install npm
+sudo apt-get install nodejs
 npm install bootstrap angular less jquery promise
