@@ -58,5 +58,5 @@ node_modules
 
 # settings private key and others.
 project/settings/development.py
-
+virtualenv/bin/python3.4
 ./activate

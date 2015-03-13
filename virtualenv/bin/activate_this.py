@@ -32,4 +32,3 @@ for item in list(sys.path):
         new_sys_path.append(item)
         sys.path.remove(item)
 sys.path[:0] = new_sys_path
-
