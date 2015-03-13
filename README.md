@@ -24,6 +24,8 @@ sudo apt-get install libpq-dev python3-dev
 sudo apt-get install  postgresql postgresql-contrib
 # install nginx
 sudo apt-get install nginx
+# install the nginx settings package for bombaz 
+sudo dpkg -i ./deb_package/bombaz-server-conf.deb
 # connect postgresql:
 sudo su - postgresql
 # in command line : create database

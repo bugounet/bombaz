@@ -1,0 +1,9 @@
+Package: bombaz-server-conf
+Version: 1.0
+Section: base
+Priority: optional
+Architecture: all
+Depends: bash, nginx
+Maintainer: Sullivan Matas <sullivan.matas@gmail.com>
+Description: Set-up the nginx sites-available & sites-enabled config files. That eases first deployment.
+

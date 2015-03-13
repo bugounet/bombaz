@@ -1,0 +1,4 @@
+#!/bin/bash
+rm /etc/nginx/sites-enabled/bombaz
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled
+service nginx restart
