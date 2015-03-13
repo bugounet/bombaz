@@ -53,6 +53,10 @@ docs/_build/
 # PyBuilder
 target/
 
+#javascript requirements from npm
+node_modules
+
 # settings private key and others.
 project/settings/development.py
+
 ./activate

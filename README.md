@@ -37,4 +37,11 @@ psql
 # grant all privileges on database you just created
 GRANT ALL PRIVILEGES ON DATABASE bombazdb TO databaseuser;
 
-
+# for development purpose you can install javascript tools like less, bootstrap, grunt and so on.
+# to achieve this, you will first need to install the node package manager, and then the 
+# tools. Ubuntu's node pacage manager is a little bit old, so we'll use chris lea's PPA
+# repository.
+sudo apt-add-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install npm
+npm install bootstrap angular less jquery promise
