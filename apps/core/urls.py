@@ -1,9 +1,9 @@
 from django.conf.urls import patterns, include, url
-
+import core.views.index as core_index_view
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'bombazproject.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+    # main website : game showcase logged out/unsubscribed visitors.
+    # ex: /
+    url(r'^$', core_index_view.public, name='index'),
 )
 
 
