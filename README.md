@@ -45,3 +45,9 @@ sudo apt-add-repository ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get install nodejs
 npm install
+# compile the bootstrap sources.
+cd node_modules/bootstrap
+npm install
+grunt 
+cd ../..
+
