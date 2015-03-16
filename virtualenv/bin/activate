@@ -43,7 +43,7 @@ VIRTUAL_ENV="/home/smatas/workspace/bombaz/virtualenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
-PATH="$VIRTUAL_ENV/bin:$PATH"
+PATH="$VIRTUAL_ENV/bin:$VIRTUAL_ENV/../node_modules/.bin:$PATH"
 export PATH
 
 # unset PYTHONHOME if set
