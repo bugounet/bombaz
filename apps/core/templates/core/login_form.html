@@ -1,0 +1,17 @@
+{% extends "core/index.html" %}
+
+{% block content %}
+<h1 class="cover-heading">Identify yourself and play</h1>
+<form class="form-inline" action="login">
+  <div class="form-group">
+    <label class="sr-only" for="emailInput">Email address</label>
+    <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="passwordInput">Password</label>
+    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-default">Sign in</button>
+</form>
+{% endblock %}
+
