@@ -1,5 +1,15 @@
 {% extends "core/index.html" %}
 
+{% block topmenu %}
+<nav>
+  <ul class="nav masthead-nav">
+    <li class="active"><a href="/">Home</a></li>
+    <li><a href="/features">Features</a></li>
+    <li><a href="/login">{{ WEBSITE_STRINGS.LOGIN }}</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
 {% block content %}
 <h1 class="cover-heading">{{ WEBSITE_STRINGS.WELCOME_TEXT }}</h1>
 <p class="lead">
