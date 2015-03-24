@@ -16,12 +16,12 @@
 <form class="form-inline" method="POST" action="login">
   {% csrf_token %}
   <div class="form-group">
-    <label class="sr-only" for="emailInput">Email address</label>
-    <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
+    <label class="sr-only" for="usernameInput">User name</label>
+    <input type="text" class="form-control" id="usernameInput" name="username" placeholder="Enter user name">
   </div>
   <div class="form-group">
     <label class="sr-only" for="passwordInput">Password</label>
-    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+    <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password">
   </div>
   <button type="submit" class="btn btn-default">Sign in</button>
 </form>
