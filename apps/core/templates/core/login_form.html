@@ -1,11 +1,12 @@
 {% extends "core/index.html" %}
+{% load i18n %}
 
 {% block topmenu %}
 <nav>
   <ul class="nav masthead-nav">
-    <li><a href="/">Home</a></li>
-    <li><a href="/features">Features</a></li>
-    <li class="active"><a href="/login">{{ WEBSITE_STRINGS.LOGIN }}</a></li>
+    <li><a href="/">{% trans "Home" %}</a></li>
+    <li><a href="/features">{% trans "Features" %}</a></li>
+    <li><a href="/login">{% trans WEBSITE_STRINGS.LOGIN %}</a></li>
   </ul>
 </nav>
 {% endblock %}

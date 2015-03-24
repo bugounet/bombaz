@@ -1,8 +1,0 @@
-TITLE = "Bombaz, the first HTML5 MMO Bomberman"
-WELCOME_TEXT = "Welcome to bombaz"
-DESCRIPTION_TEXT = """The first massive multiplayer online bomberman game relying on HTML5 technology."""
-SOURCE_CODE_REPO = "https://github.com/sullivanMatas/bombaz"
-GAME_NAME = "Bombaz"
-JOIN_BUTTON = "Join now"
-LONG_DESCRIPTION = """You can just subscribe for free and play the game using the match making engine, or invite your friends and start a custom game. Play as a team or get ready to be defeated."""
-LOGIN = "Log-in"

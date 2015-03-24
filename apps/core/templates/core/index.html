@@ -3,6 +3,7 @@
 <html lang="en">
   <head>
     {% load staticfiles %}
+    {% load i18n %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +11,7 @@
     <meta name="description" content="html5 MMO bomberman game">
     <meta name="author" content="Sullivan Matas">
     <link rel="icon" href="../../favicon.ico">
-    <title>{{ WEBSITE_STRINGS.TITLE }}</title>
+    <title>{% trans "Bombaz, the first HTML5 MMO Bomberman" %}</title>
     <!-- Custom styles for this template -->
     <link href="{% static 'core/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'core/css/cover.css' %}" rel="stylesheet">
@@ -33,7 +34,7 @@
           <div class="masthead clearfix">
             <div class="inner">
               
-              <h3 class="masthead-brand">{{ WEBSITE_STRINGS.GAME_NAME }}</h3>
+              <h3 class="masthead-brand">Bombaz</h3>
               {% block topmenu %}
               
               {% endblock %}
@@ -49,8 +50,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Check-out the git repository avliable at <a href="{{ WEBSITE_STRINGS.SOURCE_CODE_REPO }}">{{ WEBSITE_STRINGS.SOURCE_CODE_REPO }}</a>.
-              </p>
+              <p>{% trans "Check-out the git repository avliable at " %}<a href="https://github.com/sullivanMatas/bombaz">https://github.com/sullivanMatas/bombaz</a></p>
             </div>
           </div>
 

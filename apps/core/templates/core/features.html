@@ -1,18 +1,19 @@
 {% extends "core/index.html" %}
+{% load i18n %}
 
 {% block topmenu %}
 <nav>
   <ul class="nav masthead-nav">
-    <li><a href="/">Home</a></li>
-    <li class="active"><a href="/features">Features</a></li>
-    <li><a href="/login">{{ WEBSITE_STRINGS.LOGIN }}</a></li>
+    <li><a href="/">{% trans "Home" %}</a></li>
+    <li><a href="/features">{% trans "Features" %}</a></li>
+    <li><a href="/login">{% trans "Log-in" %}</a></li>
   </ul>
 </nav>
 {% endblock %}
 
 {% block content %}
-<h1 class="cover-heading">FEATURES</h1>
-<p class="lead"> {{ WEBSITE_STRINGS.LONG_DESCRIPTION }} 
+<h1 class="cover-heading">{% trans "FEATURES" %}</h1>
+<p class="lead">{% trans "You can just subscribe for free and play the game using the match making engine, or invite your friends and start a custom game. Play as a team or get ready to be defeated." %}
 </p>
 {% endblock %}
 
