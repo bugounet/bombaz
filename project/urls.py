@@ -4,10 +4,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 import core.urls
+import lobby.urls
 
 urlpatterns = patterns('',
     # core urls
     url(r'', include(core.urls)),
+    url(r'^lobby/', include(lobby.urls)),
     # urls for admin interface.
     # url(r'^admin/', include(admin.site.urls)),
 )
