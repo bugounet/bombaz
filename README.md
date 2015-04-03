@@ -13,8 +13,8 @@ List of technologies used in this project :
 HOWTO install : 
 # put the projet somewhere to make the venv work
 put the project repository into /home/<you>/workspace/bombaz
-# replace my user name by <you>
-find ./virtualenv -type f -exec sed -i 's/smatas/<you>/g' {} \;
+# setup a virtual env
+virtualenv -p python3.4 --no-site-packages virtualenv
 #Update your system
 sudo apt-get update
 sudo apt-get upgrade
@@ -36,6 +36,10 @@ createuser -P databaseuser
 psql
 # grant all privileges on database you just created
 GRANT ALL PRIVILEGES ON DATABASE bombazdb TO databaseuser;
+# activate virtual env
+. virtualenv/bin/activate
+# install dependencies
+pip install django gunicorn psycopg2
 
 # for development purpose you can install javascript tools like less, bootstrap, grunt and so on.
 # to achieve this, you will first need to install the node package manager, and then the 
