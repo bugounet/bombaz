@@ -1,3 +1,14 @@
+/* icons font specifications */
+@font-face {
+	font-family: 'hbicon';
+	src: url('fonts/hbicons.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+.icon {
+	font-family: 'hbicon';
+}
+
 /*
  * Globals
  */
@@ -19,7 +30,7 @@ a:hover {
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: $text-color;
+  color: #eef0f2;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #717579;
   border: 1px solid white;
@@ -36,7 +47,7 @@ body {
   background-color:#717579;
 }
 body {
-  color: $text-color;
+  color: #eef0f2;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
@@ -55,8 +66,6 @@ body {
   vertical-align: top;
 }
 .cover-container {
-  margin-right: auto;
-  margin-left: auto;
 }
 
 /* Padding for spacing */
@@ -71,41 +80,40 @@ body {
 .masthead-brand {
   margin-top: 10px;
   margin-bottom: 10px;
+  display:block;
 }
 
 .masthead-nav > li {
-  display: inline-block;
+  display: block;
 }
 .masthead-nav > li + li {
-  margin-left: 20px;
+  margin-top: 10px;
 }
 .masthead-nav > li > a {
   padding-right: 0;
   padding-left: 0;
   font-size: 16px;
   font-weight: bold;
-  color: $text-color;
+  color: #eef0f2;
   border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
-  border-bottom-color: $background-selected;
+  border-bottom-color: #a62639;
 }
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
   color: #fff;
   border-bottom-color: #fff;
-  background-color: $selected-color:
+  background-color: #a62639:
 }
 
 @media (min-width: 768px) {
   .masthead-brand {
-    float: left;
   }
   .masthead-nav {
-    float: right;
   }
 }
 
@@ -128,8 +136,7 @@ body {
  */
 
 .mastfoot {
-  color: $disabled-color; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
+  color: #c6cbce; /* IE8 proofing */
 }
 
 

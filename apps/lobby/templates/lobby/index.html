@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en">
   <head>
     {% load staticfiles %}
     {% load i18n %}
@@ -14,43 +14,38 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'core/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'lobby/css/lobby.css' %}" rel="stylesheet">
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!--[if lt IE 9]><script src="{% static 'lobby/js/ie8-responsive-file-warning.js' %}"></script><![endif]-->
+    <script src="{% static 'lobby/js/ie-emulation-modes-warning.js' %}"></script>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="{% static 'lobby/js/angular.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lobby/js/app/app.js' %}" type="text/javascript"></script>
   </head>
 
   <body>
 
-    <div class="site-wrapper">
+    <div class="site-wrapper" ng-app="lobby">
 
       <div class="site-wrapper-inner">
 
-        <div class="row">
-          <div class="clearfix col-md-1">
+          <div class="leftbar" ng-controller>
             <nav>
               <ul class="nav masthead-nav">
-                <li><a href="/">{% trans "Home" %}</a></li>
-                <li><a href="/features">{% trans "Features" %}</a></li>
-                <li><a href="/login">{% trans "Log-in" %}</a></li>
+                <li><a href="#" hint="{% trans 'Home' %}">&#xe021;</a></li>
+                <li><a href="#scores" hint="{% trans 'My scores' %}">&#xe012;</a></li>
+                <li><a href="#store" hint="{% trans 'Store' %}">&#xe116;</a></li>
+                <li><a href="#prefs" hint="{% trans 'Preferences' %}">&#xe136;</a></li>
               </ul>
             </nav>
           </div>
 
-          <div class="inner cover">
-          <!-- content -->
-          </div>
-
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>{% trans "Check-out the git repository avliable at " %}<a href="https://github.com/sullivanMatas/bombaz">https://github.com/sullivanMatas/bombaz</a></p>
+          <div class="inner cover content">
+            <div id="newgame"class="">
+            toto
             </div>
           </div>
-
-        </div>
 
       </div>
 
@@ -62,7 +57,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="{% static 'lobby/js/ie10-viewport-bug-workaround.js' %}"></script>
   </body>
 </html>
 

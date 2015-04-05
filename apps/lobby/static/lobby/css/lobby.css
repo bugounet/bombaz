@@ -1,3 +1,21 @@
+/* icons font specifications */
+@font-face {
+	font-family: "hbicons";
+	src: url("/static/lobby/fonts/hbicons.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "glyphicons";
+	src: url("/static/lobby/fonts/glyphicons-halflings-regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.icon {
+	font-family: "hbicons";
+}
+
 /*
  * Globals
  */
@@ -51,7 +69,6 @@ body {
           box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 .site-wrapper-inner {
-  display: table-cell;
   vertical-align: top;
 }
 .cover-container {
@@ -62,41 +79,59 @@ body {
   padding: 30px;
 }
 
+.content {
+  position:absolute;
+  left:5em;
+  top:0;
+  width : calc(100% - 5em);
+}
+
 
 /*
  * Header
  */
 .masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 1em;
+  margin-bottom: 1em;
   display:block;
 }
 
+.leftbar {
+    position:absolute;
+    left:0;
+    top:0;
+    width:5em;
+    box-shadow: 2px 0px 2px grey;
+}
 .masthead-nav > li {
+  margin-top:10px;
   display: block;
 }
 .masthead-nav > li + li {
-  margin-top: 10px;
+/*  border-top:1px solid black;*/
+  box-shadow: 0px -2px 2px grey;
 }
-.masthead-nav > li > a {
+.masthead-nav > li {
   padding-right: 0;
   padding-left: 0;
-  font-size: 16px;
+  font-size: 1.6em;
   font-weight: bold;
   color: #eef0f2;
-  border-bottom: 2px solid transparent;
 }
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: $background-selected;
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
+.masthead-nav > li > a:hover {
   color: #fff;
-  border-bottom-color: #fff;
-  background-color: #a62639:
+  background-color:transparent;
+}
+.masthead-nav > li > a:focus {
+  color: #a62639;
+  background-color:transparent;
+}
+.masthead-nav > li > a {
+  font-family: "glyphicons";
+  font-weight:normal;
+  padding:0;
+  font-size:2em;
+  color: #e4eaec;
 }
 
 @media (min-width: 768px) {
@@ -112,10 +147,10 @@ body {
  */
 
 .cover {
-  padding: 0 20px;
+  padding: 0 3em;
 }
 .cover .btn-lg {
-  padding: 10px 20px;
+  padding: 1em 3em;
   font-weight: bold;
 }
 
