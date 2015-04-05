@@ -30,5 +30,11 @@
   "license": "",
   "bugs": {
     "url": "https://github.com/sullivanMatas/bombaz/issues"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "^0.11.1",
+    "grunt-contrib-uglify": "^0.8.1",
+    "grunt-contrib-watch": "^0.6.1"
   }
 }
