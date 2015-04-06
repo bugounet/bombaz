@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="lobbyApp">
   <head>
     {% load staticfiles %}
     {% load i18n %}
@@ -9,41 +9,61 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="html5 MMO bomberman game">
     <meta name="author" content="Sullivan Matas">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="{% static 'core/images/favicon.ico' %}">
     <title>{% trans "Bombaz, yet another HTML5 MMO Bomberman" %}</title>
     <!-- Custom styles for this template -->
     <link href="{% static 'core/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'lobby/css/lobby.css' %}" rel="stylesheet">
-    <!--[if lt IE 9]><script src="{% static 'lobby/js/ie8-responsive-file-warning.js' %}"></script><![endif]-->
-    <script src="{% static 'lobby/js/ie-emulation-modes-warning.js' %}"></script>
+    <!--[if lt IE 9]><script src="{% static 'lobby/js/bootstrap/ie8-responsive-file-warning.js' %}"></script><![endif]-->
+    <script src="{% static 'lobby/js/bootstrap/ie-emulation-modes-warning.js' %}"></script>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="{% static 'lobby/js/angular.js' %}" type="text/javascript"></script>
-    <script src="{% static 'lobby/js/app/app.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lobby/js/angular/angular.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lobby/js/bombaz.js' %}" type="text/javascript"></script>
   </head>
 
   <body>
 
-    <div class="site-wrapper" ng-app="lobby">
+    <div class="site-wrapper" >
 
       <div class="site-wrapper-inner">
 
-          <div class="leftbar" ng-controller>
+          <div class="leftbar" ng-controller="navCtrl">
             <nav>
               <ul class="nav masthead-nav">
-                <li><a href="#" hint="{% trans 'Home' %}">&#xe021;</a></li>
-                <li><a href="#scores" hint="{% trans 'My scores' %}">&#xe012;</a></li>
-                <li><a href="#store" hint="{% trans 'Store' %}">&#xe116;</a></li>
-                <li><a href="#prefs" hint="{% trans 'Preferences' %}">&#xe136;</a></li>
+                <li>
+                    <a href="#" class="%% navClass('home') %%" 
+                       hint="{% trans 'Home' %}">
+                        &#xe021;
+                    </a>
+                </li>
+                <li>
+                    <a href="#scores" class="%% navClass('scores') %%"
+                       hint="{% trans 'My scores' %}">
+                        &#xe012;
+                    </a>
+                </li>
+                <li>
+                    <a href="#store" class="%% navClass('store') %%" 
+                       hint="{% trans 'Store' %}">
+                        &#xe116;
+                    </a>
+                </li>
+                <li>
+                    <a href="#prefs" class="%% navClass('prefs') %%"
+                       hint="{% trans 'Preferences' %}">
+                        &#xe136;
+                    </a>
+                </li>
               </ul>
             </nav>
           </div>
 
           <div class="inner cover content">
-            <div id="newgame"class="">
-            toto
+            <div id="scores"class="">
+                <div lobby-scores-table></div>
             </div>
           </div>
 
@@ -55,9 +75,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'lobby/js/bootstrap/bootstrap.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{% static 'lobby/js/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="{% static 'lobby/js/bootstrap/ie10-viewport-bug-workaround.js' %}"></script>
   </body>
 </html>
 

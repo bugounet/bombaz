@@ -118,11 +118,14 @@ body {
   font-weight: bold;
   color: #eef0f2;
 }
-.masthead-nav > li > a:hover {
+.masthead-nav > li > a:hover
+{
   color: #fff;
   background-color:transparent;
 }
-.masthead-nav > li > a:focus {
+
+.masthead-nav > li > a:focus,
+.masthead-nav > li > .active {
   color: #a62639;
   background-color:transparent;
 }

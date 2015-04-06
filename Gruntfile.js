@@ -5,22 +5,24 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     // Run jsHint on all sources & tests
     jshint: {
-      files: ['Gruntfile.js', 'javascript/src/**/*.js', 'javascript/test/**/*.js'],
+      files: ['Gruntfile.js', 'javascript/lobby/src/**/*.js', 'javascript/lobby/test/**/*.js'],
       options: {
         globals: {
           jQuery: true
         }
       }
     },
+    // concatenate all sources in one app file.
     concat: {
       options: {
         separator: ';'
       },
       dist: {
-        src: ['javascript/src/lobby/**/*.js'],
+        src: ['javascript/lobby/src/**/*.js'],
         dest: 'apps/lobby/static/lobby/js/<%= pkg.name %>.js'
       }
     },
+    // create a mimified version
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
@@ -34,7 +36,7 @@ module.exports = function(grunt) {
     // on each file modification, run jsHint
     watch: {
       files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
+      tasks: ['jshint', 'concat']
     }
   });
 
