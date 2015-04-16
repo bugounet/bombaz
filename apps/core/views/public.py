@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from core.forms import SubscriptionForm
 from django.db import IntegrityError
+from django.views.decorators.http import require_http_methods, require_GET
 
 def _(string):
     return string
