@@ -17,59 +17,94 @@ put the projet somewhere to make the venv work
 for example put the project repository into /home/<you>/workspace/bombaz
 
 Set a virtual env up
-> virtualenv -p python3.4 --no-site-packages virtualenv
+> ```virtualenv -p python3.4 --no-site-packages virtualenv```
+
 Add environment variables used in our case : development settings module and so on...
-> echo "export DJANGO_SETTINGS_MODULE=project.settings.development" >> virtualenv/bin/activate
+> ```echo "export DJANGO_SETTINGS_MODULE=project.settings.development" >> virtualenv/bin/activate```
+
+Remove SECRET_KEY variable from secret.py file.
+> ```sed -i -e 's/SECRET_KEY.*//' /tmp/bombaz/project/settings/secret.py```
+
 Generate a random secret key
-> KEY=`python3 scripts/secret_key_generator.py 50`
-Use the key to OVERRIDE template's default value '==='
-> sed  -i -e "s#===#`echo $KEY`#" project/settings/secret.py
+> ```KEY=$(python3 scripts/secret_key_generator.py 50)```
+
+Escape single quotes for python interpreter.
+> ```KEY=$(echo $KEY | sed -e "s/'/\\\'/g");```
+
+Use the key to append the result to template file.
+> ```echo "SECRET_KEY='$KEY'" >> /tmp/bombaz/project/settings/secret.py```
+
 Tell git to forget about the changes you made.
-> git update-index --assume-unchanged project/settings/secret.py
+> ```git update-index --assume-unchanged project/settings/secret.py```
+
 Update your system
-> sudo apt-get update
-> sudo apt-get upgrade
+> ```sudo apt-get update```
+
+> ```sudo apt-get upgrade```
+
 Install dev libs so you can instal psycopg2
-> sudo apt-get install libpq-dev python3-dev
+> ```sudo apt-get install libpq-dev python3-dev```
+
 Install pgsql
-> sudo apt-get install  postgresql postgresql-contrib
+> ```sudo apt-get install  postgresql postgresql-contrib```
+
 Install nginx
-> sudo apt-get install nginx
+> ```sudo apt-get install nginx```
+
 Install the nginx settings package for bombaz 
-> sudo dpkg -i ./deb_package/bombaz-server-conf.deb
+> ```sudo dpkg -i ./deb_package/bombaz-server-conf.deb```
+
 Connect postgresql:
-> sudo su - postgresql
+> ```sudo su - postgresql```
+
 In command line : create database
-> createdb bombazdb
+> ```createdb bombazdb```
+
 Create user
-> createuser -P databaseuser
+> ```createuser -P databaseuser```
+
 Connect to sql interpreter
-> psql
+> ```psql```
+
 Grant all privileges on database you just created
-> GRANT ALL PRIVILEGES ON DATABASE bombazdb TO databaseuser;
+> ```GRANT ALL PRIVILEGES ON DATABASE bombazdb TO databaseuser;```
+
 Activate virtual env
-> . virtualenv/bin/activate
+> ```. virtualenv/bin/activate```
+
 Install dependencies
-> pip install django gunicorn psycopg2
+> ```pip install django gunicorn psycopg2```
+
 Go back to initial environment
-> deactivate
+> ```deactivate```
 
 ### Once in dev env, you can  get and "compile" JS dependencies.
-for development purpose you can install javascript tools like less, bootstrap, grunt and so on.
-to achieve this, you will first need to install the node package manager, and then the 
+For development purpose you can install javascript tools like less, bootstrap, grunt and so on.
+To achieve this, you will first need to install the node package manager, and then the 
 tools. Ubuntu's node package manager is a little bit old, so we'll use Chris Lea's PPA
 repository.
 
-add Chris Lea's PP1
-> sudo apt-add-repository ppa:chris-lea/node.js
-> sudo apt-get update
-install the node js
-> sudo apt-get install nodejs
-install project's dependencies
-> npm install
-compile Bootstrap's sources.
-> cd node_modules/bootstrap
-> npm install
-> grunt 
-> cd ../..
+Add Chris Lea's PP1
+> ```sudo apt-add-repository ppa:chris-lea/node.js```
+
+> ```sudo apt-get update```
+
+Install the node js
+> ```sudo apt-get install nodejs```
+
+Install project's dependencies
+> ```npm install```
+
+Compile Bootstrap's sources.
+> ```cd node_modules/bootstrap```
+
+> ```npm install```
+
+> ```grunt ```
+
+> ```cd ../..```
+
+Thanks for reading. Please, report any errors on this tutorial if you are stuck somewhere.
+
+Sullivan
 
