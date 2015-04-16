@@ -15,6 +15,11 @@ HOWTO install :
 put the project repository into /home/<you>/workspace/bombaz
 # setup a virtual env
 virtualenv -p python3.4 --no-site-packages virtualenv
+# add environment variables used in our case : development settings module and so on...
+echo "export DJANGO_SETTINGS_MODULE=project.settings.development" >> virtualenv/bin/activate
+# generate a random secret key (overrides the templating secret.py file)
+KEY=`python3 scripts/secret_key_generator.py 50`
+sed  -i -e "s#===#`echo $KEY`#" project/settings/secret.py
 #Update your system
 sudo apt-get update
 sudo apt-get upgrade

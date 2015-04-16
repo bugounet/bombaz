@@ -57,6 +57,5 @@ target/
 node_modules
 
 # settings private key and others.
-project/settings/development.py
 virtualenv
 
