@@ -17,9 +17,12 @@ put the project repository into /home/<you>/workspace/bombaz
 virtualenv -p python3.4 --no-site-packages virtualenv
 # add environment variables used in our case : development settings module and so on...
 echo "export DJANGO_SETTINGS_MODULE=project.settings.development" >> virtualenv/bin/activate
-# generate a random secret key (overrides the templating secret.py file)
+# generate a random secret key
 KEY=`python3 scripts/secret_key_generator.py 50`
+# USE the key to OVERRIDE template's default value '==='
 sed  -i -e "s#===#`echo $KEY`#" project/settings/secret.py
+# tell git to forget about the changes you made.
+git update-index --assume-unchanged project/settings/secret.py
 #Update your system
 sudo apt-get update
 sudo apt-get upgrade
