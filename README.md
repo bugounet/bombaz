@@ -40,6 +40,8 @@ GRANT ALL PRIVILEGES ON DATABASE bombazdb TO databaseuser;
 . virtualenv/bin/activate
 # install dependencies
 pip install django gunicorn psycopg2
+# go back to initial environment
+deactivate
 
 # for development purpose you can install javascript tools like less, bootstrap, grunt and so on.
 # to achieve this, you will first need to install the node package manager, and then the 
