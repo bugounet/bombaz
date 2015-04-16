@@ -9,16 +9,20 @@ def _(string):
     return string
 
 
+@require_GET
 def home(request):
     template = loader.get_template('core/home.html')
     context = RequestContext(request)
     return HttpResponse(template.render(context))
 
+
+@require_GET
 def features(request):
     template = loader.get_template('core/features.html')
     context = RequestContext(request)
     return HttpResponse(template.render(context))
 
+@require_http_methods(["GET", "POST"])
 def login_form(request):
     context = RequestContext(request)
     if request.method == 'POST':
@@ -46,6 +50,7 @@ def login_form(request):
     template = loader.get_template('core/login_form.html')
     return HttpResponse(template.render(context))
 
+@require_http_methods(["GET", "POST"])
 def signup_form(request):
     template = loader.get_template('core/home.html')
     # create a dict to store context, transation strings and so on.
@@ -79,7 +84,6 @@ def signup_form(request):
             'error': ("one or more fields are invalid.")
         })
 
-    context.update({'todo':'test'})
     # return HTTP response
     template = loader.get_template('core/signup_form.html')
     return HttpResponse(template.render(context))
