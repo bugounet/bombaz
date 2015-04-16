@@ -13,61 +13,63 @@ Django powered website that offers access to an HTML5 powered multiplayer bomber
 
 # HOWTO install : 
 
-### put the projet somewhere to make the venv work
-put the project repository into /home/<you>/workspace/bombaz
-### setup a virtual env
-virtualenv -p python3.4 --no-site-packages virtualenv
-### add environment variables used in our case : development settings module and so on...
-echo "export DJANGO_SETTINGS_MODULE=project.settings.development" >> virtualenv/bin/activate
-### generate a random secret key
-KEY=`python3 scripts/secret_key_generator.py 50`
-### USE the key to OVERRIDE template's default value '==='
-sed  -i -e "s#===#`echo $KEY`#" project/settings/secret.py
-### tell git to forget about the changes you made.
-git update-index --assume-unchanged project/settings/secret.py
-### Update your system
-sudo apt-get update
-sudo apt-get upgrade
-### install dev libs so you can instal psycopg2
-sudo apt-get install libpq-dev python3-dev
-### install pgsql
-sudo apt-get install  postgresql postgresql-contrib
-### install nginx
-sudo apt-get install nginx
-### install the nginx settings package for bombaz 
-sudo dpkg -i ./deb_package/bombaz-server-conf.deb
-### connect postgresql:
-sudo su - postgresql
-### in command line : create database
-createdb bombazdb
-### create user
-createuser -P databaseuser
-### connect to sql interpreter
-psql
-### grant all privileges on database you just created
-GRANT ALL PRIVILEGES ON DATABASE bombazdb TO databaseuser;
-### activate virtual env
-. virtualenv/bin/activate
-### install dependencies
-pip install django gunicorn psycopg2
-### go back to initial environment
-deactivate
+put the projet somewhere to make the venv work
+for example put the project repository into /home/<you>/workspace/bombaz
+
+Set a virtual env up
+> virtualenv -p python3.4 --no-site-packages virtualenv
+Add environment variables used in our case : development settings module and so on...
+> echo "export DJANGO_SETTINGS_MODULE=project.settings.development" >> virtualenv/bin/activate
+Generate a random secret key
+> KEY=`python3 scripts/secret_key_generator.py 50`
+Use the key to OVERRIDE template's default value '==='
+> sed  -i -e "s#===#`echo $KEY`#" project/settings/secret.py
+Tell git to forget about the changes you made.
+> git update-index --assume-unchanged project/settings/secret.py
+Update your system
+> sudo apt-get update
+> sudo apt-get upgrade
+Install dev libs so you can instal psycopg2
+> sudo apt-get install libpq-dev python3-dev
+Install pgsql
+> sudo apt-get install  postgresql postgresql-contrib
+Install nginx
+> sudo apt-get install nginx
+Install the nginx settings package for bombaz 
+> sudo dpkg -i ./deb_package/bombaz-server-conf.deb
+Connect postgresql:
+> sudo su - postgresql
+In command line : create database
+> createdb bombazdb
+Create user
+> createuser -P databaseuser
+Connect to sql interpreter
+> psql
+Grant all privileges on database you just created
+> GRANT ALL PRIVILEGES ON DATABASE bombazdb TO databaseuser;
+Activate virtual env
+> . virtualenv/bin/activate
+Install dependencies
+> pip install django gunicorn psycopg2
+Go back to initial environment
+> deactivate
 
 ### Once in dev env, you can  get and "compile" JS dependencies.
 for development purpose you can install javascript tools like less, bootstrap, grunt and so on.
 to achieve this, you will first need to install the node package manager, and then the 
 tools. Ubuntu's node package manager is a little bit old, so we'll use Chris Lea's PPA
 repository.
-### add Chris Lea's PP1
-sudo apt-add-repository ppa:chris-lea/node.js
-sudo apt-get update
-### install the node js
-sudo apt-get install nodejs
-### install project's dependencies
-npm install
-### compile Bootstrap's sources.
-cd node_modules/bootstrap
-npm install
-grunt 
-cd ../..
+
+add Chris Lea's PP1
+> sudo apt-add-repository ppa:chris-lea/node.js
+> sudo apt-get update
+install the node js
+> sudo apt-get install nodejs
+install project's dependencies
+> npm install
+compile Bootstrap's sources.
+> cd node_modules/bootstrap
+> npm install
+> grunt 
+> cd ../..
 
