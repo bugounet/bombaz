@@ -4,7 +4,7 @@
 {% block topmenu %}
 <nav>
   <ul class="nav masthead-nav">
-    <li><a href="/">{% trans "Home" %}</a></li>
+    <li><a href="{% url "bombaz:core:home" %}">{% trans "Home" %}</a></li>
     <li><a href="/features">{% trans "Features" %}</a></li>
     <li><a href="/login">{% trans "Log-in" %}</a></li>
   </ul>
