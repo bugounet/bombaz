@@ -73,7 +73,7 @@ Activate virtual env
 > ```. virtualenv/bin/activate```
 
 Install dependencies
-> ```pip install django gunicorn psycopg2```
+> ```pip install -r requirements.pip```
 
 Go back to initial environment
 > ```deactivate```
