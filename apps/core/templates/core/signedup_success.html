@@ -1,6 +1,6 @@
 {% extends "core/index.html" %}
 {% load i18n %}
-    
+
 {% block topmenu %}
 {% endblock %}
 
@@ -8,7 +8,7 @@
 <h1 class="cover-heading">{% trans "Subscription succeeded" %}</h1>
 <p class="lead">{% trans "You can now enjoy bombaz by reading the tutorial or joining the lobby." %}</p>
 <p>{% trans "If you like this game, don't forget to invite your friends." %}</p>
-<button class="btn btn-success"><a href="/lobby">{% trans "Play" %}</a></button>
-<button class="btn btn-info"><a href="/tutorial">{% trans "Tutorial" %}</a></button>
+<button class="btn btn-success"><a href="bombaz-lobby:index">{% trans "Play" %}</a></button>
+<button class="btn btn-info"><a href="bombaz-lobby:tutorial">{% trans "Tutorial" %}</a></button>
 {% endblock %}
 

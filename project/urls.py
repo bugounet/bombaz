@@ -8,8 +8,8 @@ import lobby.urls
 
 urlpatterns = patterns('',
     # core urls
-    url(r'', include(core.urls)),
-    url(r'^lobby/', include(lobby.urls)),
+    url(r'', include(core.urls, namespace='bombaz-core')),
+    url(r'^lobby/', include(lobby.urls, namespace='bombaz-lobby')),
     # urls for admin interface.
     # url(r'^admin/', include(admin.site.urls)),
 )

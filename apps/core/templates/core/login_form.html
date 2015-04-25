@@ -4,16 +4,16 @@
 {% block topmenu %}
 <nav>
   <ul class="nav masthead-nav">
-    <li><a href="{% url "bombaz:core:home" %}">{% trans "Home" %}</a></li>
-    <li><a href="{% url "bombaz:core:features" %}">{% trans "Features" %}</a></li>
-    <li class="active"><a href="{% url "bombaz:core:login" %}">{% trans "Log-in" %}</a></li>
+    <li><a href="{% url "bombaz-core:home" %}">{% trans "Home" %}</a></li>
+    <li><a href="{% url "bombaz-core:features" %}">{% trans "Features" %}</a></li>
+    <li class="active"><a href="{% url "bombaz-core:login" %}">{% trans "Log-in" %}</a></li>
   </ul>
 </nav>
 {% endblock %}
 
 {% block content %}
 <h1 class="cover-heading">Identify yourself and play</h1>
-<form class="form-inline" method="POST" action="login">
+<form class="form-inline" method="POST" action="">
   {% csrf_token %}
   <div class="form-group">
     <label class="sr-only" for="usernameInput">User name</label>
@@ -25,6 +25,6 @@
   </div>
   <button type="submit" class="btn btn-default">Sign in</button>
 </form>
-<p class="text-right">or sign up <a href="{% url "bombaz:core:signup" %}"><strong>here</strong></a></p>
+<p class="text-right">or sign up <a href="{% url "bombaz-core:signup" %}"><strong>here</strong></a></p>
 {% endblock %}
 
