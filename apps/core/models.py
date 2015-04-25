@@ -18,7 +18,8 @@ class Player(models.Model):
     skins = models.ForeignKey('Skin')
     maps = models.ForeignKey('Map')
     # cross user relations
-    Friends = models.ManyToManyField(through='FriendshipRelation')
+    Friends = models.ManyToManyField('Player',
+                                     through='FriendshipRelation')
 
 # Mood model (players describing their feelings)
 class Mood(models.Model):
@@ -43,11 +44,11 @@ class Map(models.Model):
 
 class FriendshipRelation(models.Model):
     # relation basic fields
-    from_player_id = models.ForeignKey(Player)
-    to_player_id = models.ForeignKey(Player)
-    id = models.UUIDField(primary_key=True,
-                          default=uuid4,
-                          editable=False)
+#     from_player = models.ForeignKey(Player)
+#     to_player = models.ForeignKey(Player)
+#     id = models.UUIDField(primary_key=True,
+#                           default=uuid4,
+#                           editable=False)
     # Relation meta information like establishment date
     # games played together and so on.
     blocked = models.BooleanField(default=False)
