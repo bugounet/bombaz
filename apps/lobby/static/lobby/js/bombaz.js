@@ -1,10 +1,34 @@
-var lobbyApp = angular.module('lobbyApp', []);
+var lobbyApp = angular.module('lobbyApp', [
+	//'navCtrl',
+    'ngRoute',
+]);
 
 lobbyApp.config(function($interpolateProvider) {
 $interpolateProvider.startSymbol('%%');
 $interpolateProvider.endSymbol('%%');
 });
-;
+
+lobbyApp.config(['$routeProvider', function ($routeProvider){
+	$routeProvider.
+		when('/', {
+			templateUrl: '/lobby/templates/home',
+			controller: 'homeController'
+		}).
+		when('/scores', {
+			templateUrl: '/lobby/templates/scores',
+			controller: 'scoresController'
+		}).
+		when('/store', {
+			templateUrl: '/lobby/templates/store',
+			controller: 'storeController'
+		}).
+		when('/prefs', {
+			templateUrl: '/lobby/templates/prefs',
+			controller: 'prefsController'
+		}).otherwise({
+			redirectTo:'/'
+		});
+}]);
 
 lobbyApp.controller('navCtrl', ['$scope', '$location', function ($scope, $location) {
 

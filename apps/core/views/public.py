@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.views.decorators.http import require_safe
 
+
 def _(string):
     return string
 

@@ -21,6 +21,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="{% static 'lobby/js/angular/angular.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lobby/js/angular/angular-route.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'lobby/js/bombaz.js' %}" type="text/javascript"></script>
   </head>
 
@@ -34,7 +35,7 @@
             <nav>
               <ul class="nav masthead-nav">
                 <li>
-                    <a href="#" class="%% navClass('home') %%" 
+                    <a href="#/" class="%% navClass('home') %%"
                        hint="{% trans 'Home' %}">
                         &#xe021;
                     </a>
@@ -46,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#store" class="%% navClass('store') %%" 
+                    <a href="#store" class="%% navClass('store') %%"
                        hint="{% trans 'Store' %}">
                         &#xe116;
                     </a>
@@ -61,10 +62,8 @@
             </nav>
           </div>
 
-          <div class="inner cover content">
-            <div id="scores"class="">
-                <div lobby-scores-table></div>
-            </div>
+          <div ng-view class="inner cover content">
+
           </div>
 
       </div>
@@ -84,6 +83,6 @@
 
 
   <body>
-    
+
   </body>
 </html>

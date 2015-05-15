@@ -15,9 +15,9 @@ from django.db.backends.dummy.base import IntegrityError
 
 
 def do_login(request, login_form):
-    """ Actual login method : takes the view request, 
-    safe username and password and do authentication.
-    
+    """ Actual login method : takes the view request,
+    safe user name and password and do authentication.
+
     Raises: ValueError with error description if credentials are
     invalid or data in form are not OK.
     Raises: RuntimeError if user is not active.
@@ -25,7 +25,7 @@ def do_login(request, login_form):
     # if login_form is not valid raise an exception.
     if not login_form.is_valid():
         raise ValueError("Invalid data in form")
-    
+
     # get data from valid login form
     data = login_form.cleaned_data
     # get user authentication credential parameters
@@ -37,24 +37,25 @@ def do_login(request, login_form):
     if user is None:
         # Return an 'invalid login' error message.
         raise ValueError("Invalid username or password.")
-    
+
     if not user.is_active:
         # Return an 'user tempoary locked' error message.
         raise RuntimeError("Your account has been suspended")
-    
+
     login(request, user)
+
 
 @require_http_methods(["GET", "POST"])
 def login_form_view(request):
     """ View method for user login
     """
-    # login error string : 
+    # login error string :
     login_error = None
     # user has submitted a form: create a bound Form
     # create an empty login form
     data = request.POST if request.method is 'POST' else None
     login_form = LoginForm(data)
-    
+
     if request.method is 'POST':
         # user has submitted a form: try to login
         try:
@@ -79,16 +80,17 @@ def login_form_view(request):
     template = loader.get_template('core/login_form.html')
     return HttpResponse(template.render(context))
 
+
 @require_http_methods(["GET", "POST"])
 def signup_form_view(request):
-    # create an errpr srting
+    # create an error srting
     error_text = None
     # if POST method used, create a bound RegistrationForm instance
     # else create an empty form
     data = request.POST if request.method is 'POST' else None
     subscription_form = SubscriptionForm(data)
 
-    # If the request method is POST, 
+    # If the request method is POST,
     # we need to validate it and try to register user
     if request.method == 'POST' and subscription_form.is_valid():
         # The form is valid we can save it to a database
@@ -100,12 +102,14 @@ def signup_form_view(request):
         password = data['password']
         try:
             # get the user manager and create a User
-            user = User.objects.create_user(login , email, password)
+            user = User.objects.create_user(login,
+                                            email,
+                                            password)
         except IntegrityError:
             error_text = _("User login already taken")
         except ValueError:
             error_text = _("User name is invalid")
-        else: 
+        else:
             user.save()
             # render a success template page
             template = loader.get_template('core/signedup_success.html')
