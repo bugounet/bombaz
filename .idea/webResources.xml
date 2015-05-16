@@ -16,6 +16,7 @@
             <path value="file://$PROJECT_DIR$/apps/core/static/core/fonts" />
             <path value="file://$PROJECT_DIR$/apps/core/static/core/js" />
             <path value="file://$PROJECT_DIR$/deb_packages" />
+            <path value="file://$PROJECT_DIR$/configs" />
           </resourceRoots>
         </entryData>
       </entry>
