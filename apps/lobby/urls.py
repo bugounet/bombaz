@@ -10,6 +10,6 @@ urlpatterns = patterns(
     url(r'^templates/home$', lobby_view.home, name="home"),
     url(r'^templates/scores$', lobby_view.scores, name="scores"),
     url(r'^templates/store$', lobby_view.store, name="store"),
-    url(r'^templates/prefs$', lobby_view.prefs, name="prefs"),
+    url(r'^templates/preferences', lobby_view.preferences, name="preferences"),
     url(r'^api/1.0/scores/[0-9]+$', lobby_api_v1.scores),
 )

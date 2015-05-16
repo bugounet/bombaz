@@ -33,8 +33,8 @@ def store(request):
     return HttpResponse(template.render(context))
 
 
-def prefs(request):
-    template = loader.get_template('lobby/prefs.html')
+def preferences(request):
+    template = loader.get_template('lobby/preferences.html')
     context = RequestContext(request, {
         'me': request.user,
     })
