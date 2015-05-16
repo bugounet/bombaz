@@ -13,17 +13,14 @@ Django powered website that offers access to an HTML5 powered multiplayer bomber
 
 # HOWTO install : 
 
-put the projet somewhere to make the venv work
-for example put the project repository into /home/<you>/workspace/bombaz
-
-Set a virtual env up
+Set a virtual environment up
 > ```virtualenv -p python3.4 --no-site-packages virtualenv```
 
 Add environment variables used in our case : development settings module and so on...
 > ```echo "export DJANGO_SETTINGS_MODULE=project.settings.development" >> virtualenv/bin/activate```
 
 Remove SECRET_KEY variable from secret.py file.
-> ```sed -i -e 's/SECRET_KEY.*//' /tmp/bombaz/project/settings/secret.py```
+> ```sed -i -e 's/SECRET_KEY.*//' project/settings/secret.py```
 
 Generate a random secret key
 > ```KEY=$(python3 scripts/secret_key_generator.py 50)```
@@ -32,7 +29,7 @@ Escape single quotes for python interpreter.
 > ```KEY=$(echo $KEY | sed -e "s/'/\\\'/g");```
 
 Use the key to append the result to template file.
-> ```echo "SECRET_KEY='$KEY'" >> /tmp/bombaz/project/settings/secret.py```
+> ```echo "SECRET_KEY = '$KEY'" >> project/settings/secret.py```
 
 Tell git to forget about the changes you made.
 > ```git update-index --assume-unchanged project/settings/secret.py```
