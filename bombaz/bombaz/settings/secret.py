@@ -8,4 +8,4 @@ Usage : from projet.settings.secret import
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = 'pa+UZLXB!oSZ#"1+}I70\'$we9V*`\\Nx+x;PP<&lVV*Wi7s6Jb('
+SECRET_KEY = 'a#fex)5o[0t;{0}CyBmhHJkqtEfl)*41`,\M\c[3NsV#HR9u2B'

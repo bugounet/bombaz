@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'core',
     'lobby',
+    'players',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,7 +61,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'bombaz.urls'
 
-WSGI_APPLICATION = 'project.wsgi.application'
+WSGI_APPLICATION = 'bombaz.wsgi.application'
 
 
 # Database
@@ -70,8 +71,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'bombazdb',
-        'USER': 'databaseuser',
-        'PASSWORD': 'bombaz is a good game though',
+        'USER': 'bugounet',
+        'PASSWORD': 'luciole',
         'HOST': 'localhost',
         'PORT': '',
     }
