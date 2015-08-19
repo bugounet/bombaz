@@ -11,6 +11,5 @@ urlpatterns = patterns(
     url(r'^templates/scores$', lobby_view.scores, name="scores"),
     url(r'^templates/store$', lobby_view.store, name="store"),
     url(r'^templates/preferences', lobby_view.preferences, name="preferences"),
-    url(r'^api/', include(api_routes, namespace="api_v1")),
 )
 

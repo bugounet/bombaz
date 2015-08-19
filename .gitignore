@@ -57,6 +57,6 @@ target/
 node_modules
 
 # settings private key and others.
-project/settings/secret.py
+bombaz/settings/secret.py
 virtualenv
-
+.idea
