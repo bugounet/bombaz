@@ -1,4 +1,5 @@
 from django.db import models
+from store.models import BuyableItem
 
 
 # Skins: Players can buy skins for their robot. It's always better to have

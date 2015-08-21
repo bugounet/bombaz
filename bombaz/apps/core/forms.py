@@ -37,7 +37,7 @@ class SubscriptionForm(forms.Form):
 
 class LoginForm(forms.Form):
     # login input
-    login = forms.CharField(
+    username = forms.CharField(
         max_length=50,
         help_text="Login")
     # password input

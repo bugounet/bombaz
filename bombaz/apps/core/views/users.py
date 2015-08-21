@@ -3,12 +3,12 @@ Created on 23 avr. 2015
 
 @author: bugounet
 '''
+from django.core.urlresolvers import reverse
 from django.db import IntegrityError
 from django.views.decorators.http import require_http_methods
 from django.template.context import RequestContext
-from django.contrib.auth import authenticate
-from apps.core.tests import login
-from apps.core.forms import LoginForm, SubscriptionForm
+from django.contrib.auth import authenticate, login
+from core.forms import LoginForm, SubscriptionForm
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.template import loader
 from django.utils.translation import ugettext as _
@@ -24,9 +24,10 @@ def do_login(request, login_form):
     Raises: RuntimeError if user is not active.
     """
     # if login_form is not valid raise an exception.
-    if not login_form.is_valid():
-        raise ValueError("Invalid data in form")
 
+    if not login_form.is_valid():
+        print(login_form.errors)
+        raise ValueError("Invalid data in form")
     # get data from valid login form
     data = login_form.cleaned_data
     # get user authentication credential parameters
@@ -51,27 +52,30 @@ def login_form_view(request):
     """ View method for user login
     """
     # login error string :
-    login_error = None
+    login_error = ""
+
     # user has submitted a form: create a bound Form
     # create an empty login form
-    data = request.POST if request.method is 'POST' else None
+    print("request.method", request.method)
+    data = request.POST if request.method == 'POST' else None
+    print("data:", data)
     login_form = LoginForm(data)
 
-    if request.method is 'POST':
+    if request.method == 'POST':
         # user has submitted a form: try to login
         try:
             do_login(request, login_form)
         except ValueError as e:
             # in case of ValueError : bad parameters or login form invalid
             # set error message
-            login_error = e.message
+            login_error = str(e)
         except RuntimeError as e:
             # in case of RuntimeError (user not active)
             # set error message
-            login_error = e.message
+            login_error = str(e)
         else:
             # Redirect to a success page if everything is fine
-            return HttpResponseRedirect("lobby:index")
+            return HttpResponseRedirect(reverse("bombaz-lobby:index"))
     # create a context and a context dictionnary
     context_d = {
         'login_form': login_form,

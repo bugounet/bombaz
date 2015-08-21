@@ -47,6 +47,10 @@ INSTALLED_APPS = (
     'core',
     'lobby',
     'players',
+    'social',
+    'games',
+    'gameparts',
+    'store',
 )
 
 MIDDLEWARE_CLASSES = (

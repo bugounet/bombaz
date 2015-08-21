@@ -1,5 +1,4 @@
 from django.conf.urls import patterns, include, url
-import api_v1.urls as api_routes
 import lobby.views.lobby as lobby_view
 import lobby.views.tutorial as tutorial_view
 

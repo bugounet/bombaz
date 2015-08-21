@@ -13,13 +13,19 @@ class Player(models.Model):
     user = models.OneToOneField(User)
     # add bombaz's users fields like score and so on...
 
-    # create a list of moods
-    moods = models.ForeignKey('core.Mood')
-    # scores
-    scores = models.ForeignKey('core.Score')
-    # shop's articles like skins ans maps
-    skins = models.ForeignKey('core.Skin')
-    maps = models.ForeignKey('core.Map')
+
+    # Related name generated from Mood model
+    # moods = model."ManyToOne"
+
+    # Related name generated from Score model
+    # scores = model."ManyToOne"
+
+    # Related name generated from Skin model
+    # skins = model."ManyToOne"
+
+    # Related name generated from Map model
+    # maps = model."ManyToOne"
+
     # cross user relations
     Friends = models.ManyToManyField('Player',
                                      through='FriendshipRelation')
