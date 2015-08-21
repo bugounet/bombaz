@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="lobbyApp">
+  <head>
+    {% load staticfiles %}
+    {% load i18n %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="html5 MMO bomberman game">
+    <meta name="author" content="Sullivan Matas">
+    <link rel="icon" href="{% static 'core/images/favicon.ico' %}">
+    <title>{% trans "Bombaz, yet another HTML5 MMO Bomberman" %}</title>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'core/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lobby/css/lobby.css' %}" rel="stylesheet">
+    <!--[if lt IE 9]><script src="{% static 'lobby/js/bootstrap/ie8-responsive-file-warning.js' %}"></script><![endif]-->
+    <script src="{% static 'lobby/js/bootstrap/ie-emulation-modes-warning.js' %}"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="{% static 'lobby/js/angular/angular.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lobby/js/angular/angular-route.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lobby/js/bombaz.js' %}" type="text/javascript"></script>
+  </head>
+
+  <body>
+
+    <div class="site-wrapper" >
+
+      <div class="site-wrapper-inner">
+
+          <div id="home" class="">
+            <div>
+                <h1>{%  trans "No tutorial yet But we're working on it." %}</h1>
+                Click
+                <a href="{% url 'bombaz-lobby:index' %}">
+                    <button ng-click="useMatchMaking()" class="btn
+                    btn-success">
+                        Here
+                    </button>
+                </a>to join the main lobby.
+            </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{% static 'lobby/js/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'lobby/js/bootstrap/ie10-viewport-bug-workaround.js' %}"></script>
+  </body>
+</html>
+
+
+
+  <body>
+
+  </body>
+</html>
