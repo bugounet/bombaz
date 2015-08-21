@@ -13,13 +13,18 @@
 
 {% block content %}
 <h1 class="cover-heading">{% trans "Subscribe now" %}</h1>
-<form method="POST" action="/subscribe">
+<form method="POST" action="{% url 'bombaz-core:signup' %}">
   {% csrf_token %}
   <div class="row form-group {% if loginError %} error {% endif %}">
     <label class="col-sm-2 control-label" for="loginInput">{% trans "User name" %}</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="loginInput" name="login" placeholder="User name" value="{{ form.login.value }}"/>
     </div>
+      {% if subscription_form.errors %}
+        {% for error in subscription_form.login.errors %}
+            <label class="col-sm-2 text-danger">{{ error|escape }}</label>
+        {% endfor %}
+    {% endif %}
     <label class="col-sm-2 text-danger">{{ loginError }}</label>
   </div>
   <div class="row form-group {% if emailError %} error {% endif %}">
@@ -27,6 +32,11 @@
     <div class="col-sm-8">
       <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email" value="{{ form.email.value }}"/>
     </div>
+      {% if subscription_form.errors %}
+        {% for error in subscription_form.email.errors %}
+            <label class="col-sm-2 text-danger">{{ error|escape }}</label>
+        {% endfor %}
+    {% endif %}
     <label class="col-sm-2 text-danger">{{ emailError }}</label>
   </div>
   <div class="row form-group {% if passwordError %} error {% endif %}">
@@ -34,6 +44,11 @@
     <div class="col-sm-8">
       <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password"/>
     </div>
+      {% if subscription_form.errors %}
+        {% for error in subscription_form.password.errors %}
+            <label class="col-sm-2 text-danger">{{ error|escape }}</label>
+        {% endfor %}
+    {% endif %}
     <label class="col-sm-2 text-danger"></label>
   </div>
   <div class="row form-group {% if passwordError %} error {% endif %}">
@@ -41,7 +56,12 @@
     <div class="col-sm-8">
       <input type="password" class="form-control" id="password2Input" name="password2" placeholder="Password"/>
     </div>
-    <label class="col-sm-2 text-danger">{{ passwordError }}</label>
+      {% if subscription_form.errors %}
+        {% for error in subscription_form.password2.errors %}
+            <label class="col-sm-2 text-danger">{{ error|escape }}</label>
+        {% endfor %}
+    {% endif %}
+  <label class="col-sm-2 text-danger">{{ passwordError }}</label>
   </div>
   <div class="form-group">
     <div class="col-sm-12">

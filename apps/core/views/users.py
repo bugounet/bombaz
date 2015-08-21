@@ -3,6 +3,7 @@ Created on 23 avr. 2015
 
 @author: bugounet
 '''
+from django.db import IntegrityError
 from django.views.decorators.http import require_http_methods
 from django.template.context import RequestContext
 from django.contrib.auth import authenticate
@@ -10,8 +11,8 @@ from apps.core.tests import login
 from apps.core.forms import LoginForm, SubscriptionForm
 from django.http.response import HttpResponseRedirect, HttpResponse
 from django.template import loader
+from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
-from django.db.backends.dummy.base import IntegrityError
 
 
 def do_login(request, login_form):
@@ -87,33 +88,41 @@ def signup_form_view(request):
     error_text = None
     # if POST method used, create a bound RegistrationForm instance
     # else create an empty form
-    data = request.POST if request.method is 'POST' else None
+    data = request.POST if request.method == 'POST' else None
     subscription_form = SubscriptionForm(data)
 
     # If the request method is POST,
     # we need to validate it and try to register user
-    if request.method == 'POST' and subscription_form.is_valid():
-        # The form is valid we can save it to a database
-        # by creating a model object and populating the
-        # data from the form object
-        data = subscription_form.cleaned_data
-        login = data['login']
-        email = data['email']
-        password = data['password']
-        try:
-            # get the user manager and create a User
-            user = User.objects.create_user(login,
-                                            email,
-                                            password)
-        except IntegrityError:
-            error_text = _("User login already taken")
-        except ValueError:
-            error_text = _("User name is invalid")
+    if request.method == 'POST':
+        if subscription_form.is_valid():
+            # The form is valid we can save it to a database
+            # by creating a model object and populating the
+            # data from the form object
+            data = subscription_form.cleaned_data
+            login = data['login']
+            email = data['email']
+            password = data['password']
+            try:
+                # get the user manager and create a User
+                user = User.objects.create_user(login,
+                                                email,
+                                                password)
+                user.save()
+            except IntegrityError:
+                print("integrity")
+                error_text = _("User login already taken")
+            except ValueError:
+                print("value error")
+                error_text = _("User name is invalid")
+            else:
+                print("else!")
+                # render a success template page
+                template = loader.get_template('core/signedup_success.html')
+                return HttpResponse(template.render())
         else:
-            user.save()
-            # render a success template page
-            template = loader.get_template('core/signedup_success.html')
-            return HttpResponse(template.render())
+            print(subscription_form)
+            error_text = subscription_form.errors
+
     # create a context and a context dictionnary
     context_d = {
         'subscription_form': subscription_form,
