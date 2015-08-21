@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     // Run jsHint on all sources & tests
     jshint: {
-      files: ['Gruntfile.js', '/src/**/*.js', '/test/**/*.js'],
+      files: ['Gruntfile.js', 'bombaz/javascript/lobby/src/**/*.js', 'bombaz/javascript/lobby/test/**/*.js'],
       options: {
         globals: {
           jQuery: true
@@ -18,21 +18,37 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['src/**/*.js'],
-        dest: '../../apps/lobby/static/lobby/js/lobby.js'
+        src: ['bombaz/javascript/lobby/src/**/*.js'],
+        dest: 'bombaz/apps/lobby/static/lobby/js/lobby.js'
       }
     },
     copy: {
-      main: {
+      lobby: {
         files: [
-          {expand: true, src: ['css'], dest: '../../apps/lobby/static/lobby/'},
-          {expand: true, src: ['fonts'], dest: '../../apps/lobby/static/lobby/'},
-          {expand: true, src: ['lib/**'], dest: '../../apps/lobby/static/lobby/js/'},
           {
             expand: true,
-            src: ['templates/*.html'],
-            dest: '../../apps/lobby/templates/lobby/',
+            src: ['bombaz/javascript/lobby/css/**/*'],
+            dest: 'bombaz/apps/lobby/static/lobby/css/'
           },
+          {
+            expand: true,
+            src: ['bombaz/javascript/lobby/fonts/**/*'],
+            dest: 'bombaz/apps/lobby/static/lobby/fonts/'
+          },
+          {
+            expand: true,
+            src: ['bombaz/javascript/lobby/templates/**/*.html'],
+            dest: 'bombaz/apps/lobby/templates/lobby/',
+          }
+        ]
+      },
+      lobbylibs: {
+        files: [
+          {
+            expand: true,
+            src: ['bombaz/javascript/lobby/lib/**/*'],
+            dest: 'bombaz/apps/lobby/static/lobby/js/'
+          }
         ]
       }
     },
@@ -58,7 +74,8 @@ grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-contrib-jshint');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-concat');
+grunt.loadNpmTasks('grunt-contrib-copy');
 
 grunt.registerTask('test', ['jshint']);
-grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+grunt.registerTask('default', ['jshint', 'concat', 'copy:lobby']);
 };
