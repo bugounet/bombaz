@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     // Run jsHint on all sources & tests
     jshint: {
-      files: ['Gruntfile.js', 'javascript/lobby/src/**/*.js', 'javascript/lobby/test/**/*.js'],
+      files: ['Gruntfile.js', '/src/**/*.js', '/test/**/*.js'],
       options: {
         globals: {
           jQuery: true
@@ -18,8 +18,22 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['javascript/lobby/src/**/*.js'],
-        dest: 'apps/lobby/static/lobby/js/<%= pkg.name %>.js'
+        src: ['src/**/*.js'],
+        dest: '../../apps/lobby/static/lobby/js/lobby.js'
+      }
+    },
+    copy: {
+      main: {
+        files: [
+          {expand: true, src: ['css'], dest: '../../apps/lobby/static/lobby/'},
+          {expand: true, src: ['fonts'], dest: '../../apps/lobby/static/lobby/'},
+          {expand: true, src: ['lib/**'], dest: '../../apps/lobby/static/lobby/js/'},
+          {
+            expand: true,
+            src: ['templates/*.html'],
+            dest: '../../apps/lobby/templates/lobby/',
+          },
+        ]
       }
     },
     // create a mimified version
@@ -29,13 +43,13 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'apps/lobby/static/lobby/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+          'apps/lobby/static/lobby/js/lobby.min.js': ['<%= concat.dist.dest %>']
         }
       }
     },
     // on each file modification, run jsHint
     watch: {
-      files: ['<%= jshint.files %>'],
+      files: ['<%= jshint.files %>', ],
       tasks: ['jshint', 'concat']
     }
   });
